@@ -76,10 +76,7 @@ const Dashboard = () => {
   };
 
   const handleNewRound = async () => {
-    const newRound = await createRound();
-    setSelectedRound(newRound._id);
-    navigate('/');
-    window.location.reload();
+    alert("Can't Create new Round");
   }
 
   const round = rounds.find((r) => r._id === selectedRound) || currentRound;
