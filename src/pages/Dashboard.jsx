@@ -451,7 +451,7 @@ const Dashboard = () => {
                       <TableCell>Date</TableCell>
                       <TableCell align="right">Amount Paid</TableCell>
                       <TableCell>Balance Left</TableCell>
-                      <TableCell>Deascription</TableCell>
+                      <TableCell>Description</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
