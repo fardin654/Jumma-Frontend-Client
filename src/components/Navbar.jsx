@@ -42,9 +42,9 @@ const Navbar = () => {
           <Typography variant="h6" component="div" sx={{ 
             fontWeight: 700,
             letterSpacing: 0.5,
-            display: { xs: 'none', sm: 'block' }
+            display: 'block'
           }}>
-            Jumma Expense
+            {isMobile ? 'Jumma' : 'Jumma Expense'}
           </Typography>
         </Box>
 
@@ -53,18 +53,6 @@ const Navbar = () => {
             gap: { xs: 0.3, sm: 1.5 }, 
             mr: { xs: 2.5, sm: 4 } // slight negative right margin
           }}>
-          <Button 
-            component={Link} 
-            to="/"
-            sx={{
-              color: 'text.primary',
-              '&:hover': {
-                backgroundColor: theme.palette.action.hover
-              }
-            }}
-          >
-            Dashboard
-          </Button>
           <Button 
             component={Link} 
             to="/members"
