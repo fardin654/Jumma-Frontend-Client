@@ -13,6 +13,7 @@ import AddExpense from './components/AddExpense';
 import MemberList from './components/MamberList';
 import MemberPayments from './components/MemberPayments';
 import PaymentsList from './components/PaymentsList';
+import CreateRound from './components/CreateRound';
 import { PaymentsListProvider } from './context/PaymentsListContext';
 import { WalletRounded } from '@mui/icons-material';
 
@@ -36,6 +37,7 @@ function App() {
                   <Route path="/members" element={<MemberList />} />
                   <Route path="/members/:name/payments" element={<MemberPayments />} />
                   <Route path="/paymentsList/:roundNumber" element={<PaymentsList />} />
+                  <Route path="/create-round" element={<CreateRound />} />
                 </Routes>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Table,
   TableBody,
@@ -77,7 +78,10 @@ const Dashboard = () => {
   };
 
   const handleNewRound = async () => {
-    alert("Can't Create new Round");
+    const newRound = await createRound();
+    setSelectedRound(newRound._id);
+    navigate('/');
+    window.location.reload();
   }
 
   const round = rounds.find((r) => r._id === selectedRound) || currentRound;
@@ -113,7 +117,8 @@ const Dashboard = () => {
           size={isMobile ? "small" : "medium"}
           variant="contained"
           color="primary"
-          onClick={() => handleNewRound()}
+          component={Link} 
+          to="/create-round"
           sx={{ mt: 2 }}
         >
           Create New Round
@@ -153,11 +158,10 @@ const Dashboard = () => {
               </Typography>
               <Typography variant="subtitle1" color="text.secondary">
                 {new Date(round.date).toLocaleDateString('en-GB', {
-                  weekday: 'long',
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric',
-                })}
+                })} | Fixed: {round.fixedAmount}
               </Typography>
             </Box>
 
@@ -167,7 +171,7 @@ const Dashboard = () => {
                 value={selectedRound || ''}
                 onChange={(e) => {
                   if (e.target.value === 'new') {
-                    handleNewRound(); 
+                    // handleNewRound(); 
                   } else {
                     handleRoundChange(e);
                   }
@@ -180,7 +184,7 @@ const Dashboard = () => {
                     {new Date(r.date).toLocaleDateString('en-GB')}
                   </MenuItem>
                 ))}
-                <MenuItem value="new">
+                <MenuItem value="new" component={Link} to="/create-round">
                   <Typography fontWeight="bold" onClick={() => handleNewRound()}>+ Create New Round</Typography>
                 </MenuItem>
               </Select>
@@ -347,7 +351,7 @@ const Dashboard = () => {
                   <TableBody>
                     {sortedPayments.map((payment) => {
                       const member = members.find((m) => m.name === payment.member);
-                      const balance = 400 - payment.amount<0? 0 : 400 - payment.amount; 
+                      const balance = round.fixedAmount - payment.amount<0? 0 : round.fixedAmount - payment.amount; 
                       return (
                         <TableRow key={payment._id} hover>
                           <TableCell onClick={() => navigate(`/members/${member.name}/payments`)} style={{ cursor: 'pointer' }}>
@@ -380,7 +384,7 @@ const Dashboard = () => {
                             </Typography>
                           </TableCell>
 
-                          <TableCell align="center">
+                         <TableCell align="center">
                             <TextField
                               value={payment.amount}
                               size="small"
@@ -404,7 +408,7 @@ const Dashboard = () => {
                               color={
                                 balance === 0
                                   ? 'success'
-                                  : balance === 400
+                                  : balance === round.fixedAmount
                                   ? 'error'
                                   : 'warning'
                               }
