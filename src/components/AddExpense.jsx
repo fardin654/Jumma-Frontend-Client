@@ -18,6 +18,8 @@ import { RoundsContext } from "../context/RoundsContext";
 import { useNavigate } from 'react-router-dom';
 import { useExpenses } from '../context/ExpensesContext';
 import { WalletContext } from '../context/WalletContext';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const AddExpense = () => {
@@ -37,7 +39,16 @@ const AddExpense = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Can't Add Expense");
+    toast.error("Can't Add Expense", {
+      position: "top-center",
+      autoClose: 3000, 
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored", 
+    });
+
   };
 
   return (
@@ -112,6 +123,7 @@ const AddExpense = () => {
           </Button>
         </form>
       </Paper>
+      <ToastContainer />
     </Container>
   );
 };

@@ -8,6 +8,8 @@ import {
 } from '@mui/material';
 import { MembersContext } from '../context/MembersContext';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddMember = () => {
   const [name, setName] = useState('');
@@ -17,7 +19,16 @@ const AddMember = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Can't Add Member")
+    toast.error("Can't Add New Member", {
+      position: "top-center",
+      autoClose: 3000, 
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+    });
+
   };
 
   return (
@@ -51,6 +62,7 @@ const AddMember = () => {
           </Button>
         </form>
       </Paper>
+      <ToastContainer />
     </Container>
   );
 };

@@ -17,6 +17,8 @@ import { RoundsContext } from "../context/RoundsContext";
 import { useNavigate } from 'react-router-dom';
 import { usePayments } from '../context/PaymentsContext';
 import { useContext } from 'react';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddPayment = () => {
   const [amount, setAmount] = useState('');
@@ -33,7 +35,16 @@ const AddPayment = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Can't Add Payment");
+    toast.error("Can't Add Payment", {
+      position: "top-center",
+      autoClose: 3000, 
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+    });
+
   };
 
   return (
@@ -113,6 +124,7 @@ const AddPayment = () => {
           </Button>
         </form>
       </Paper>
+      <ToastContainer />
     </Container>
   );
 };
