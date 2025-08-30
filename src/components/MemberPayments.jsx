@@ -50,7 +50,7 @@ const MemberPayments = () => {
   }
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ py: 4 }}>
       <Button
         startIcon={<ArrowBack />}
         onClick={() => navigate(-1)}
