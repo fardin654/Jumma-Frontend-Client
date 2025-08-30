@@ -15,6 +15,7 @@ import {
   CircularProgress
 } from '@mui/material';
 import { usePaymentsList } from '../context/PaymentsListContext';
+import { ArrowBack } from "@mui/icons-material";
 
 const MemberPayments = () => {
   const { name } = useParams(); // name from URL
@@ -50,12 +51,12 @@ const MemberPayments = () => {
 
   return (
     <Container maxWidth="lg">
-      <Button 
-        variant="outlined" 
-        onClick={() => navigate('/members')}
-        style={{ margin: '20px 0' }}
+      <Button
+        startIcon={<ArrowBack />}
+        onClick={() => navigate(-1)}
+        sx={{ mb: 2 }}
       >
-        Back to Members List
+        Back
       </Button>
 
       <Paper elevation={3} style={{ padding: '20px', marginBottom: '20px' }}>
