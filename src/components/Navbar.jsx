@@ -39,7 +39,7 @@ const Navbar = () => {
       <Toolbar sx={{ 
         maxWidth: 'xl',
         mx: 'auto',
-        width: '100%',
+        width: '95%',
         px: { xs: 2, sm: 3 }
       }}>
         <Box sx={{ 
